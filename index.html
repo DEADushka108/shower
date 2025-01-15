@@ -1,210 +1,1385 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-    <title>Shower Presentation Engine</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <link rel="stylesheet" href="shower/themes/ribbon/styles/styles.css">
-    <style>
-        .shower {
-            --slide-ratio: calc(16 / 9);
-        }
-    </style>
+	<title>Селекторы CSS</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+	<link rel="stylesheet" href="shower/themes/ribbon/styles/styles.css">
+	<meta name="description" content="Рассказ про современные подходы в верстке веб приложений">
+    <link rel="stylesheet" href="../src/shower/themes/ribbon-3/styles/styles.css">
+    <link rel="stylesheet" href="../src/highlight/styles/monokai.min.css">
+    <link rel="stylesheet" href="style.css?v=0.0.0">
+    <script type="module" src="./baseline-status.min.js"></script>
 </head>
 <body class="shower list">
 
-    <header class="caption">
-        <h1>Shower Presentation Engine</h1>
-        <p>Yours Truly, Famous Inc.</p>
-    </header>
+	<header class="caption">
+		<h1>Селекторы CSS</h1>
+        <p>
+            <a href="https://t.me/DEADok108">Кузнецов Андрей</a>, ММК-Информсервис
+        </p>
+	</header>
 
-    <section class="slide" id="cover">
-        <h2>Shower Presentation Engine</h2>
-        <p>Brought to you by <a href="https://pepelsbey.net">Vadim Makeev</a></p>
-        <figure>
-            <img class="cover" src="pictures/cover.jpg" alt="Hands on the orange typewriter in a park">
-            <figcaption class="copyright right white">
-                <a href="https://fiftyfootshadows.net">© John Carey</a>
-            </figcaption>
-        </figure>
-        <style>
-            #cover h2 {
-                margin: 30px 0 0;
-                color: white;
-                text-align: center;
-                font-size: 70px;
-            }
+    <section class="slide">
+        <img src="./pictures/meme-tell-me.jpg" alt="Расскажи мне" class="cover width">
+    </section>
 
-            #cover p {
-                margin: 10px 0 0;
-                text-align: center;
-                color: white;
-                font-style: italic;
-                font-size: 20px;
-            }
-
-            #cover p a {
-                color: white;
-            }
-        </style>
+	<section class="slide">
+        <img src="./pictures/meme-uzbagoizya.png" alt="Узбагойся" class="place bottom">
     </section>
 
     <section class="slide">
-        <h2>Shower key features</h2>
-        <ol>
-            <li>Built on HTML, CSS and JavaScript</li>
-            <li>Works in all modern browsers</li>
-            <li>Themes are separated from engine</li>
-            <li>Fully keyboard accessible</li>
-            <li>Printable to PDF</li>
-        </ol>
-        <p class="note">Shower ['ʃəuə] noun. A person or thing that shows.</p>
+        <img src="./pictures/css-logo.png" alt="CSS logo" class="place" width="400">
     </section>
 
     <section class="slide">
-        <h2>Plain text on your slides</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur <a href="#4">adipisicing</a> elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, <em>quis nostrud</em> exercitation ullamco laboris <strong>nisi ut aliquip</strong> ex ea commodo consequat. Duis aute irure <i>dolor</i> in reprehenderit in voluptate velit esse cillum <b>dolore</b> eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in <code>&lt;culpa&gt;</code> qui officia deserunt mollit anim id est laborum.</p>
+        <pre class="place big"><code>@media (prefers-color-scheme: dark) {
+    html {
+        color-scheme: dark;
+    }
+}</code></pre>
+        <img src="./pictures/text-if.png" alt="Если" class="place next" width="160" style="top: 20%; left: 20%;">
+        <img src="./pictures/text-find.png" alt="Найди" class="place next" width="200" style="top: 44%; left: 11%;">
+        <img src="./pictures/text-apply.png" alt="Примени" class="place next" width="200" style="top: 65%; left: 50%;">
+    </section>
+
+	<section class="slide">
+        <h2 class="shout">Найди <span class="arrow"> = </span> Селектор</h2>
+    </section>
+
+	<section class="slide clear">
+        <img src="./pictures/css-selector-spec.jpeg" alt="" class="cover width">
+        <a class="copyright" href="https://www.w3.org/TR/selectors-4/">Selector Level 4</a>
+    </section>
+
+	<section class="slide title">
+        <h2 class="shout">Поехали 🚗</h2>
+    </section>
+
+	<section class="slide">
+		<h2 class="shout">Нет доступа к разметке 😢</h2>
+	</section>
+
+	<section class="slide">
+        <h2 class="shout">Простые примеры 👍</h2>
+    </section>
+
+	<section class="slide">
+        <h2>Разрешённые символы</h2>
+        <ul>
+            <li class="next"><code>A–Z</code>, <code>a–z</code></li>
+            <li class="next"><code>0–9</code></li>
+            <li class="next"><code>-</code></li>
+            <li class="next"><code>_</code></li>
+            <li class="next"><code>U+00A0 ( )</code> и выше</li>
+            <li class="next"><code>\escaped</code></li>
+            <li class="next">не начинается с <code>[0–9]</code> или <code>-[0–9]</code></li>
+        </ul>
+    </section>
+
+	<section class="slide demo">
+        <css-demo>
+            <div class="demo-panels">
+                <textarea class="demo-code" spellcheck="false">
+<style>
+  @scope {
+    .tomato {
+      color: tomato;
+    }
+
+    .Blue {
+      color: hotpink;
+    }
+
+    .blue {
+      color: dodgerblue;
+    }
+  }
+</style>
+<p class="tomato">class = tomato</p>
+<p class="Blue">class = Blue</p>
+<p class="blue">class = blue</p>
+                </textarea>
+                <div class="demo-result"></div>
+            </div>
+        </css-demo>
+    </section>
+
+	<section class="slide demo">
+        <css-demo>
+            <div class="demo-panels">
+                <textarea class="demo-code" spellcheck="false">
+<style>
+  @scope {
+    .🍅 {
+      color: tomato;
+    }
+
+    .🍋‍🟩 {
+      color: lime;
+    }
+
+    .🍊 {
+      color: orange;
+    }
+  }
+</style>
+<p class="🍅">class = 🍅</p>
+<p class="🍋‍🟩">class = 🍋‍🟩</p>
+<p class="🍊">class = 🍊</p>
+                </textarea>
+                <div class="demo-result"></div>
+            </div>
+        </css-demo>
+    </section>
+
+	<section class="slide">
+        <pre class="place"><code>&lt;div class="Pos(a) Bgc(#0280ae) W(120px) H(90px)"&gt;&lt;/div&gt;
+&lt;div class="C(#0280ae) BdB Bdc(#0280ae) P(10px)"&gt;
+    Lorem ipsum
+&lt;/div&gt;
+</code></pre>
+    </section>
+
+	
+    <section class="slide">
+        <h2 class="shout">🧮 Специфичность</h2>
     </section>
 
     <section class="slide">
-        <h2>Two columns if you like</h2>
-        <div class="columns two">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
-            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.</p>
+        <img src="./pictures/speicificity-devtools.jpeg" alt="" class="place" width="500">
+    </section>
+
+    <section class="slide">
+        <img src="./pictures/specificity-vscode.jpeg" alt="" class="place" width="500">
+    </section>
+
+	<section class="slide">
+        <div class="terminal" data-content="@bramus/specificity">
+            <p>npm i @bramus/specificity</p>
+            <p>specificity "header:where(#top) nav li, #doormat"<br>(0,1,3)<br>(1,0,0)</p>
         </div>
+        <a class="copyright" href="https://github.com/bramus/specificity">bramus/specificity</a>
     </section>
 
-    <section class="slide">
-        <h2>All kind of lists</h2>
-        <ol>
-            <li>Simple lists are marked with bullets</li>
-            <li>Ordered lists begin with a number</li>
-            <li>You can even nest lists one inside another
-                <ul>
-                    <li>Or mix their types</li>
-                    <li>But do not go too far</li>
-                    <li>Otherwise audience will be bored</li>
-                </ul>
-            </li>
-            <li>Look, seven rows exactly!</li>
-        </ol>
+	<section class="slide">
+        <h2>Сортировка ⬇️</h2>
+        <ul>
+            <li><code>(10, 1, 2)</code></li>
+            <li><code>(0, 10, 2)</code></li>
+            <li><code>(0, 2, 10)</code></li>
+            <li><code>(0, 1, 10)</code></li>
+            <li><code>(0, 1, 1)</code></li>
+            <li><code>(0, 0, 0)</code></li>
+        </ul>
     </section>
 
-    <section class="slide">
-        <h2>Serious citations</h2>
-        <figure>
-            <blockquote>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.</p>
-            </blockquote>
-            <figcaption>Marcus Tullius Cicero</figcaption>
-        </figure>
-    </section>
-
-    <section class="slide">
-        <h2>Code samples</h2>
-        <pre>
-            <code>&lt;!DOCTYPE html&gt;</code>
-            <code class="mark">&lt;html lang="en"&gt;</code>
-            <code><mark>&lt;head&gt;</mark> <span class="comment">&lt;!--Comment--&gt;</span></code>
-            <code>    &lt;title&gt;Shower&lt;/title&gt;</code>
-            <code>    &lt;meta charset="<mark class="important">UTF-8</mark>"&gt;</code>
-            <code>    &lt;link rel="stylesheet" href="screen.css"&gt;</code>
-            <code><mark>&lt;/head&gt;</mark></code>
-        </pre>
-    </section>
-
-    <section class="slide">
-        <h2>Even tables</h2>
-        <table>
-        <tr>
-            <th scope="col">Locavore</th>
-            <th>Umami</th>
-            <th>Helvetica</th>
-            <th>Vegan</th>
-        </tr>
-        <tr>
-            <th scope="row">Fingerstache</th>
-            <td>Kale</td>
-            <td>Chips</td>
-            <td>Keytar</td>
-        </tr>
-        <tr>
-            <th scope="row">Sriracha</th>
-            <td>Gluten-free</td>
-            <td>Ennui</td>
-            <td>Keffiyeh</td>
-        </tr>
-        <tr>
-            <th scope="row">Thundercats</th>
-            <td>Jean</td>
-            <td>Shorts</td>
-            <td>Biodiesel</td>
-        </tr>
-        <tr>
-            <th scope="row">Terry</th>
-            <td>Richardson</td>
-            <td>Swag</td>
-            <td>Blog</td>
-        </tr>
-        </table>
-        <p>It’s good to have information organized.</p>
-    </section>
-
-    <section class="slide" id="picture">
-        <h2>Pictures</h2>
-        <figure>
-            <img class="cover" src="pictures/picture.jpg" alt="Orange typewriter on a wooden table close-up">
-            <figcaption class="copyright right white">
-                <a href="https://fiftyfootshadows.net">© John Carey</a>
-            </figcaption>
-        </figure>
-        <style>
-            #picture h2 {
-                color: white;
-            }
-        </style>
-    </section>
-
-    <section class="slide">
-        <h2 class="shout shrink">You can even shout this way</h2>
-    </section>
-
-    <section class="slide">
-        <h2>Inner navigation</h2>
-        <ol>
-            <li>Lets you reveal list items one by one</li>
-            <li class="next">To keep some key points</li>
-            <li class="next">In secret from audience</li>
-            <li class="next">But it will work only once</li>
-            <li class="next">Nobody wants to see the same joke twice</li>
-        </ol>
-    </section>
-
-    <section class="slide" id="see-more">
-        <h2 class="shout">
-            <img src="pictures/logo.svg" alt="Shower logo">
-            <a href="https://github.com/shower/shower">See more on GitHub</a>
+	<section class="slide">
+        <h2 class="no-bg shout shout-mini">
+            <img src="pictures/chrome-logo.svg" height="60" alt=""> (255, 255, 255)
         </h2>
-        <style>
-            #see-more h2 {
-                font-size: 100px
-            }
-
-            #see-more img {
-                width: 0.72em;
-                height: 0.72em;
-            }
-        </style>
     </section>
 
-    <footer class="badge">
-        <a href="https://github.com/shower/shower">Fork me on GitHub</a>
-    </footer>
+    <section class="slide">
+        <h2 class="no-bg shout shout-mini">
+            <img src="pictures/Firefox_logo_2019.svg" height="60" alt=""> (1023, 1023, 1023)
+        </h2>
+    </section>
 
-    <div class="progress"></div>
+    <section class="slide title">
+        <h2 class="shout">База 🧱</h2>
+    </section>
 
-    <script src="shower/shower.js"></script>
-    <!-- Copyright © 3000 Yours Truly, Famous Inc. -->
+    <section class="slide">
+        <h2 class="shout">
+            <code>#id</code><br>
+            <small>(1, 0, 0)</small>
+        </h2>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout">
+            <code>.class</code><br>
+            <small>(0, 1, 0)</small>
+        </h2>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout">
+            <code>div</code><br>
+            <small>(0, 0, 1)</small>
+        </h2>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout">
+            <code>*</code><br>
+            <small>(0, 0, 0)</small>
+        </h2>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout">
+            <code>[attr]</code><br>
+            <small>(0, 1, 0)</small>
+        </h2>
+    </section>
+
+    <section class="slide demo">
+        <css-demo>
+            <div class="demo-panels">
+                <textarea class="demo-code" spellcheck="false">
+<style>
+@scope {
+    [data-color="tomato"] {
+        color: tomato;
+        text-decoration: underline dashed;
+    }
+}
+</style>
+<p data-color="tomato">
+    tomato
+</p>
+<p data-color="tomatoes">
+    tomatoes
+</p>
+<p data-color="tomato tomato">
+    tomato tomato
+</p>
+                </textarea>
+                <div class="demo-result"></div>
+            </div>
+        </css-demo>
+        <h2 class="place right bottom" style="bottom: 10%; right: 15%"><code>[a=v]</code></h2>
+    </section>
+
+    <section class="slide demo">
+        <css-demo>
+            <div class="demo-panels">
+                <textarea class="demo-code" spellcheck="false">
+<style>
+@scope {
+    [data-color~="tomato"] {
+        color: tomato;
+        text-decoration: underline dashed;
+    }
+}
+</style>
+<p data-color="tomato">
+    tomato
+</p>
+<p data-color="tomatoes">
+    tomatoes
+</p>
+<p data-color="has tomato">
+    has tomato
+</p>
+                </textarea>
+                <div class="demo-result"></div>
+            </div>
+        </css-demo>
+        <h2 class="place right bottom" style="bottom: 10%; right: 15%"><code>[a~=v]</code></h2>
+    </section>
+
+    <section class="slide demo">
+        <css-demo>
+            <div class="demo-panels">
+                <textarea class="demo-code" spellcheck="false">
+<style>
+@scope {
+    [data-color|="tomato"] {
+        color: tomato;
+        text-decoration: underline dashed;
+    }
+}
+</style>
+<p data-color="tomato">
+    tomato
+</p>
+<p data-color="tomato-test">
+    tomato-test
+</p>
+<p data-color="tomato tomato">
+    tomato tomato
+</p>
+                </textarea>
+                <div class="demo-result"></div>
+            </div>
+        </css-demo>
+        <h2 class="place right bottom" style="bottom: 10%; right: 15%"><code>[a|=v]</code></h2>
+    </section>
+
+    <section class="slide demo">
+        <css-demo>
+            <div class="demo-panels">
+                <textarea class="demo-code" spellcheck="false">
+<style>
+@scope {
+    [data-color^="tomato"] {
+        color: tomato;
+        text-decoration: underline dashed;
+    }
+}
+</style>
+<p data-color="tomato">
+    tomato
+</p>
+<p data-color="tomatoes">
+    tomatoes
+</p>
+<p data-color="no tomato">
+    no tomato
+</p>
+                </textarea>
+                <div class="demo-result"></div>
+            </div>
+        </css-demo>
+        <h2 class="place right bottom" style="bottom: 10%; right: 15%"><code>[a^=v]</code></h2>
+    </section>
+
+    <section class="slide demo">
+        <css-demo>
+            <div class="demo-panels">
+                <textarea class="demo-code" spellcheck="false">
+<style>
+@scope {
+    [data-color$="tomato"] {
+        color: tomato;
+        text-decoration: underline dashed;
+    }
+}
+</style>
+<p data-color="tomato">
+    tomato
+</p>
+<p data-color="tomatoes">
+    tomatoes
+</p>
+<p data-color="no tomato">
+    no tomato
+</p>
+                </textarea>
+                <div class="demo-result"></div>
+            </div>
+        </css-demo>
+        <h2 class="place right bottom" style="bottom: 10%; right: 15%"><code>[a$=v]</code></h2>
+    </section>
+
+    <section class="slide demo">
+        <css-demo>
+            <div class="demo-panels">
+                <textarea class="demo-code" spellcheck="false">
+<style>
+@scope {
+    [data-color*="tomato"] {
+        color: tomato;
+        text-decoration: underline dashed;
+    }
+}
+</style>
+<p data-color="tomato">
+    tomato
+</p>
+<p data-color="unotomatoes">
+    unotomatoes
+</p>
+<p data-color="tomat">
+    tomat
+</p>
+                </textarea>
+                <div class="demo-result"></div>
+            </div>
+        </css-demo>
+        <h2 class="place right bottom" style="bottom: 10%; right: 15%"><code>[a*=v]</code></h2>
+    </section>
+
+    <section class="slide demo">
+        <css-demo>
+            <div class="demo-panels">
+                <textarea class="demo-code" spellcheck="false">
+<style>
+@scope {
+    [data-color="tomato" i] {
+        color: tomato;
+        text-decoration: underline dashed;
+    }
+}
+</style>
+<p data-color="tomato">
+    tomato
+</p>
+<p data-color="ToMaTo">
+    ToMaTo
+</p>
+                </textarea>
+                <div class="demo-result"></div>
+            </div>
+        </css-demo>
+        <h2 class="place right bottom" style="bottom: 10%; right: 15%"><code>[a=v i]</code></h2>
+    </section>
+
+    <section class="slide demo">
+        <css-demo>
+            <div class="demo-panels">
+                <textarea class="demo-code" spellcheck="false">
+<style>
+@scope {
+    [data-color="tomato" s] {
+        color: tomato;
+        text-decoration: underline dashed;
+    }
+}
+</style>
+<p data-color="tomato">
+    tomato
+</p>
+<p data-color="ToMaTo">
+    ToMaTo
+</p>
+<p>Firefox only ;)</p>
+                </textarea>
+                <div class="demo-result"></div>
+            </div>
+        </css-demo>
+        <h2 class="place right bottom" style="bottom: 10%; right: 15%"><code>[a=v s]</code></h2>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout">
+            <code>[id=some]</code><br>
+            <small>(0, 1, 0)</small>
+        </h2>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout">
+            <code>[class~=some]</code><br>
+            <small>(0, 1, 0)</small>
+        </h2>
+    </section>
+
+    <section class="slide title">
+        <h2 class="shout">Комбинаторы 🪡</h2>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout"><code>.parent .child</code></h2>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout"><code>,</code></h2>
+    </section>
+
+    <section class="slide demo">
+        <css-demo>
+            <div class="demo-panels">
+                <textarea class="demo-code" spellcheck="false">
+<style>
+@scope {
+    .orange {
+        color: orange;
+    }
+
+    .pink,
+    [class==pink] {
+        color: pink !important;
+    }
+}
+</style>
+<p class="orange pink">
+    orange or pink
+</p>
+                </textarea>
+                <div class="demo-result"></div>
+            </div>
+        </css-demo>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout"><code>.parent > .child</code></h2>
+    </section>
+
+    <section class="slide demo">
+        <css-demo>
+            <div class="demo-panels">
+                <textarea class="demo-code" spellcheck="false">
+<style>
+@scope {
+    div {
+        background-color: lime;
+        padding: 50px;
+        width: 0;
+    }
+
+    .parent > .child {
+        background-color: tomato;
+    }
+}
+</style>
+<div class="parent">
+    <div class="child">
+        <div class="child"></div>
+    </div>
+</div>
+                </textarea>
+                <div class="demo-result"></div>
+            </div>
+        </css-demo>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout"><code>.child + .child</code><br>vs<br><code>.child ~ .child</code></h2>
+    </section>
+
+    <section class="slide demo">
+        <css-demo>
+            <div class="demo-panels">
+                <textarea class="demo-code" spellcheck="false">
+<style>
+@scope {
+    .one ~ .another {
+        background-color: tomato;
+    }
+
+    .parent > * {
+        background-color: grey;
+        padding: 25px;
+        border: 2px solid black;
+    }
+}
+</style>
+<div class="parent">
+    <div class="one">1st child</div>
+    <div class="another">2nd child</div>
+    <div class="another">3rd child</div>
+    <div class="another-one">4th child</div>
+    <div class="another">5th child</div>
+</div>
+                </textarea>
+                <div class="demo-result"></div>
+            </div>
+        </css-demo>
+    </section>
+
+	<section class="slide">
+        <h2>CSS Nesting</h2>
+        <pre><code>.parent {
+    color: tomato;
+
+    .child {
+        color: violet;
+
+        &:hover {
+            color: violetblue;
+        }
+    }
+}</code></pre>
+    </section>
+
+    <section class="slide">
+        <baseline-status featureId="nesting" class="place zoom"></baseline-status>
+    </section>
+
+    <section class="slide">
+        <img src="./pictures/shadeed-nesting.jpg" alt="" class="cover height">
+        <a class="copyright" href="https://ishadeed.com/article/css-nesting/">CSS Nesting</a>
+    </section>
+
+    <section class="slide title">
+        <h2 class="shout">::псевдоэлементы</h2>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout"><code>::before</code> <br>vs<br> <code>:before</code></h2>
+    </section>
+
+    <section class="slide">
+        <h2>Совместимость с CSS Level 1/2</h2>
+        <ul>
+            <li><code>:before</code></li>
+            <li><code>:after</code></li>
+            <li><code>:first-line</code></li>
+            <li><code>:first-letter</code></li>
+        </ul>
+    </section>
+
+	<section class="slide">
+        <h2>Можно изучить самостоятельно 📚</h2>
+        <ul>
+            <li><code>::before</code></li>
+            <li><code>::after</code></li>
+            <li><code>::first-letter</code></li>
+            <li><code>::first-line</code></li>
+            <li><code>::backdrop</code></li>
+            <li><code>::placeholder</code></li>
+        </ul>
+    </section>
+
+	<section class="slide">
+        <pre class="place"><code>span::before {
+    content: "ⓘ" / "Дополнительная информация:";
+}</code></pre>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout"><code>::marker</code></h2>
+    </section>
+
+    <section class="slide demo">
+        <css-demo>
+            <div class="demo-panels">
+                <textarea class="demo-code" spellcheck="false">
+<style>
+@scope {
+    ul li::marker {
+        content: '🍎';
+        font-size: 1.5em;
+    }
+
+    ul li::before {
+        content: '' !important;
+    }
+}
+</style>
+<ul>
+    <li>Белый налив</li>
+    <li>Гала</li>
+    <li>Антоновка</li>
+</ul>
+                </textarea>
+                <div class="demo-result"></div>
+            </div>
+        </css-demo>
+    </section>
+
+	<section class="slide">
+        <h2 class="shout"><img src="./pictures/safari-logo.svg" alt="" height="65"> Safari — только цвет и размер шрифта</h2>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout"><code>::cue</code></h2>
+    </section>
+
+    <section class="slide">
+        <pre class="place"><code>&lt;video src="video.mp4"&gt;
+    &lt;track default kind="captions" srclang="en" src="en.vtt"&gt;
+&lt;/video&gt;
+&lt;style&gt;
+    video {
+        width: 100%;
+    }
+
+    video::cue {
+        font-size: 1rem;
+        color: yellow;
+    }
+&lt;/style&gt;</code></pre>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout"><code>::selection</code></h2>
+    </section>
+
+    <section class="slide demo">
+        <css-demo>
+            <div class="demo-panels">
+                <textarea class="demo-code" spellcheck="false">
+<style>
+@scope {
+    .different::selection {
+        color: #ffd139;
+        background: #ff4141;
+    }
+
+    .another::selection {
+        color: #ff4141;
+        background: #ffd139;
+    }
+}
+</style>
+<p> Стандартные цвета</p>
+<p class="different">
+    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+    Voluptatibus minus ut odit nulla esse deleniti.
+</p>
+<p class="another">А тут другие цвета, хоба!</p>
+                </textarea>
+                <div class="demo-result"></div>
+            </div>
+        </css-demo>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout"><code>::grammar-error</code>, <code>::spelling-error</code></h2>
+    </section>
+
+    <section class="slide demo">
+        <css-demo>
+            <div class="demo-panels">
+                <textarea class="demo-code" spellcheck="false">
+<style>
+@scope {
+    .color::spelling-error,
+    .color::grammar-error {
+        color: #ff9191;
+        text-decoration: underline wavy violet;
+    }
+}
+</style>
+<p contenteditable
+   spellcheck="true"
+   lang="en">
+	Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+</p>
+<p contenteditable
+   spellcheck="true"
+   lang="en"
+   class="color">
+    Voluptatibus minus ut odit nulla esse deleniti.
+    Nobis corrupti quod unde error officia amet laborum voluptatem consectetur natus earum. Doloremque, itaque rem.
+</p>
+<p contenteditable
+   spellcheck="true"
+   lang="ru"
+   class="color">
+    Сьешь ещё этих мягких французких булок да выпий чаю.
+</p>
+                </textarea>
+                <div class="demo-result"></div>
+            </div>
+        </css-demo>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout">
+            <img src="pictures/Firefox_logo_2019.svg" height="60" alt=""> Не работает в Firefox
+        </h2>
+    </section>
+
+	<section class="slide">
+        <h2 class="shout">Группа <br><code>::view-transition</code></h2>
+    </section>
+
+    <section class="slide">
+        <pre class="place big css"><code>::view-transition
+    └─ ::view-transition-group(root)
+        └─ ::view-transition-image-pair(root)
+            ├─ ::view-transition-old(root)
+            └─ ::view-transition-new(root)</code></pre>
+        <a class="copyright" href="https://youtu.be/Dud0DozVwvo">По-настоящему красивые переходы средствами браузера</a>
+    </section>
+
+	<section class="slide">
+        <h2 class="shout next"><mark class="label">CSS Only</mark></h2>
+        <iframe src="./demos/coverflow/index.html" frameborder="0" class="cover width height"></iframe>
+		<a class="copyright" href="https://youtu.be/Dud0DozVwvo">По-настоящему красивые переходы средствами браузера</a>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout next"><mark class="label">Без библиотек</mark></h2>
+        <iframe src="./demos/lightbox-like/index.html" frameborder="0" class="cover width height"></iframe>
+		<a class="copyright" href="https://youtu.be/Dud0DozVwvo">По-настоящему красивые переходы средствами браузера</a>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout">
+            <img src="pictures/Firefox_logo_2019.svg" height="120" alt="">
+            <img src="pictures/chrome-logo.svg" height="120" alt="">
+            <img src="pictures/safari-logo.svg" alt="" height="120">
+        </h2>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout" style="font-size: 2em;"><code>::file-selector-button</code></h2>
+    </section>
+
+    <section class="slide demo">
+        <css-demo>
+            <div class="demo-panels">
+                <textarea class="demo-code" spellcheck="false">
+<style>
+@scope {
+    input::file-selector-button {
+        font-weight: bold;
+        background: white;
+        color: indigo;
+        padding: 0.5em;
+        margin-right: 1em;
+        border: none;
+        border-radius: 50px;
+    }
+}
+</style>
+<label for="avatar">
+    Скинь фотку, а?
+</label><br>
+<input id="avatar"
+       type="file"
+       accept="image/png, image/jpeg">
+                </textarea>
+                <div class="demo-result"></div>
+            </div>
+        </css-demo>
+    </section>
+
+	<section class="slide title">
+        <h2 class="shout">:псевдоклассы</h2>
+    </section>
+
+    <section class="slide">
+        <h2>Можно изучить самостоятельно 📚</h2>
+        <ul class="columns two">
+            <li><code>:root</code></li>
+            <li><code>:link</code></li>
+            <li><code>:visited</code></li>
+            <li><code>:any-link</code></li>
+            <li><code>:focus</code></li>
+            <li><code>:active</code></li>
+            <li><code>:hover</code></li>
+            <li><code>:placeholder-shown</code></li>
+            <li><code>:disabled</code></li>
+            <li><code>:enabled</code></li>
+            <li><code>:optional</code></li>
+            <li><code>:required</code></li>
+            <li><code>:picture-in-picture</code></li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout"><code>:focus-visible</code></h2>
+    </section>
+
+	<section class="slide">
+        <pre class="place big css"><code>.button:focus {
+    outline: none;
+}
+
+.button:focus-visible {
+    border: 2px solid #FFFFFF;
+    outline: none;
+}</code></pre>
+        <a class="copyright" href="https://doka.guide/css/focus-visible/">:focus-visible</a>
+    </section>
+
+	<section class="slide demo">
+        <css-demo>
+            <div class="demo-panels">
+                <textarea class="demo-code" spellcheck="false">
+<style>
+@scope {
+    button {
+        font-size: 1.5em;
+        padding: 0.5em;
+        background: lightblue;
+        border-radius: 1.5em;
+    }
+
+    button:focus {
+        outline: none;
+    }
+
+    button:focus-visible {
+        border-color: red;
+        outline: 0.1em solid red;
+    }
+}
+</style>
+<button>Нажми на меня</button>
+                </textarea>
+                <div class="demo-result"></div>
+            </div>
+        </css-demo>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout"><code>:focus-within</code></h2>
+    </section>
+
+	<section class="slide demo">
+        <css-demo>
+            <div class="demo-panels">
+                <textarea class="demo-code" spellcheck="false">
+<style>
+@scope {
+    .focus {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        border: 1px dashed tomato;
+    }
+    .focus:focus-visible {
+        border: 1px solid lime;
+    }
+}
+</style>
+
+<form style="border: 1px dashed tomato; margin-bottom: 20px; padding: 10px;">
+    <input type="text" placeholder="Я просто поле ввода">
+</form>
+
+<form class="focus" style="padding: 10px;">
+    <input type="text" placeholder="Я могу менять стили"  >
+    <input type="date" placeholder="Я могу менять стили">
+    <input type="number" placeholder="Я могу менять стили">
+    <div>
+        <input type="checkbox" name="demo-checkbox-1" id="demo-checkbox-1">
+        <label for="demo-default-1">Я чекбокс и тоже меняю форму</label>
+    </div>
+    <input type="button" value="А я кнопка">
+</form>
+                </textarea>
+                <div class="demo-result"></div>
+            </div>
+        </css-demo>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout"><code>:target</code></h2>
+    </section>
+
+    <section class="slide">
+        <pre class="place big"><code>&lt;a href="#target"&gt;К цели!&lt;/a&gt;
+
+&lt;div id="target"&gt;А вот и я!&lt;/div&gt;</code></pre>
+    </section>
+
+	<section class="slide demo">
+        <css-demo>
+            <div class="demo-panels">
+                <textarea class="demo-code" spellcheck="false">
+<style>
+@scope {
+    :target {
+        border: 2px solid darkorange;
+        background-color: beige;
+        color: tomato;
+    }
+}
+</style>
+
+<p><a href="#target1">К цели №1</a></p>
+<p><a href="#target2">К цели №2</a></p>
+
+<p id="target1"><b>Цель 1: пожевать жевачку</b></p>
+<p id="target2"><b>Цель 2: ну, вы поняли...</b></p>
+                </textarea>
+                <div class="demo-result"></div>
+            </div>
+        </css-demo>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout">⚠️ <code>:target-within</code></h2>
+    </section>
+
+	<section class="slide">
+        <h2 class="shout"><code>:checked</code>, <code>:indeterminate</code></h2>
+    </section>
+
+    <section class="slide demo">
+        <css-demo>
+            <div class="demo-panels">
+                <textarea class="demo-code" spellcheck="false">
+<style>
+@scope {
+    input:checked {
+        accent-color: tomato;
+    }
+    :indeterminate {
+        height: 20px;
+        accent-color: lime;
+    }
+}
+</style>
+
+<progress></progress>
+<div>
+    <input type="checkbox" id="checkbox" checked>
+    <label for="checkbox">Я выбран</label>
+</div>
+<div>
+    <input type="checkbox" id="indeterminate">
+    <label for="indeterminate">А я не определился</label>
+</div>
+                </textarea>
+                <div class="demo-result"></div>
+            </div>
+        </css-demo>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout"><code>:in-range</code>,<br><code>:out-of-range</code></h2>
+    </section>
+
+    <section class="slide demo">
+        <css-demo>
+            <div class="demo-panels">
+                <textarea class="demo-code" spellcheck="false">
+<style>
+@scope {
+    input {
+        font-size: inherit;
+        color-scheme: dark;
+    }
+    input:in-range {
+        border: 3px solid lime;
+    }
+    input:out-of-range {
+        border: 3px dashed tomato;
+    }
+}
+</style>
+
+<div>
+    <label for="demo-number">Перебор</label>
+    <input type="number" id="demo-number" min="0" max="10" value="15">
+</div>
+<div>
+    <label for="demo-number-ok">В самый раз</label>
+    <input type="number" id="demo-number-ok" min="0" max="10" value="5">
+</div>
+                </textarea>
+                <div class="demo-result"></div>
+            </div>
+        </css-demo>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout"><code>:read-only</code>,<br><code>:read-write</code></h2>
+    </section>
+
+    <section class="slide demo">
+        <css-demo>
+            <div class="demo-panels">
+                <textarea class="demo-code" spellcheck="false">
+<style>
+@scope {
+    div {
+        padding: 0.5em 1em;
+        border-radius: 1em;
+    }
+    div:read-write {
+        background: #333;
+    }
+    div:read-only {
+        color: tomato;
+    }
+}
+</style>
+
+<div>
+    Меня нельзя отредактировать
+</div>
+<div contenteditable>
+    А меня можно
+</div>
+                </textarea>
+                <div class="demo-result"></div>
+            </div>
+        </css-demo>
+    </section>
+
+    <section class="slide">
+        <h2>Валидация ✅</h2>
+        <ul>
+            <li><code>:invalid</code></li>
+            <li><code>:valid</code></li>
+            <li><code>:user-invalid</code></li>
+            <li><code>:user-valid</code></li>
+        </ul>
+    </section>
+
+    <section class="slide demo">
+        <css-demo>
+            <div class="demo-panels">
+                <textarea class="demo-code" spellcheck="false">
+<style>
+@scope {
+    input {
+        font-size: inherit;
+        color-scheme: dark;
+    }
+    #demo-email:invalid {
+        border: 2px solid red;
+    }
+    #demo-email-ok:user-invalid {
+        border: 2px solid red;
+    }
+}
+</style>
+
+<div>
+    <label for="demo-email">Бесючий email</label>
+    <input type="email" id="demo-email" required>
+</div>
+<div>
+    <label for="demo-email-ok">Email поспокойнее</label>
+    <input type="email" id="demo-email-ok" required>
+</div>
+                </textarea>
+                <div class="demo-result"></div>
+            </div>
+        </css-demo>
+    </section>
+
+    <section class="slide">
+        <img src="./pictures/meme-valid.jpeg" alt="" class="place" width="500">
+    </section>
+
+    <section class="slide">
+        <h2 class="shout"><code>:empty</code></h2>
+    </section>
+
+    <section class="slide">
+        <pre class="place big"><code>div:empty {
+    outline: 2px solid deeppink;
+    background: deeppink;
+    height: 1em;
+}</code></pre>
+    </section>
+
+    <section class="slide">
+        <img src="./pictures/tailwind-empty.jpeg" alt="" class="cover height">
+    </section>
+
+    <section class="slide">
+        <h2 class="shout"><code>:default</code></h2>
+    </section>
+
+    <section class="slide demo">
+        <css-demo>
+            <div class="demo-panels">
+                <textarea class="demo-code" spellcheck="false">
+<style>
+@scope {
+    input:default {
+        accent-color: lime;
+    }
+    input:default + label {
+        color: lime;
+    }
+}
+</style>
+
+<form>
+    <div>
+        <input type="radio" name="demo-radio" id="demo-default-checked" value="one" checked>
+        <label for="demo-default-checked">Я был выбран сразу</label>
+    </div>
+    <div>
+        <input type="radio" name="demo-radio" id="demo-default" value="two">
+        <label for="demo-default">А я не был</label>
+    </div>
+</form>
+                </textarea>
+                <div class="demo-result"></div>
+            </div>
+        </css-demo>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout"><code>:autofill</code></h2>
+    </section>
+
+    <section class="slide">
+        <pre class="place css"><code>input:-internal-autofill-selected {
+    appearance: menulist-button;
+    background-image: none !important;
+    background-color: light-dark(
+        rgb(255, 235, 153),
+        rgba(70, 90, 126, 0.4)
+    ) !important;
+    color: fieldtext !important;
+}</code></pre>
+    </section>
+
+    <section class="slide">
+        <h2><img src="./pictures/safari-logo.svg" alt="" height="40"> Safari и мультимедиа</h2>
+        <ul>
+            <li><code>:buffering</code></li>
+            <li><code>:muted</code></li>
+            <li><code>:paused</code></li>
+            <li><code>:playing</code></li>
+            <li><code>:seeking</code></li>
+            <li><code>:stalled</code></li>
+            <li><code>:volume-locked</code></li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout"><code>:defined</code></h2>
+    </section>
+
+    <section class="slide demo">
+        <css-demo>
+            <div class="demo-panels">
+                <textarea class="demo-code" spellcheck="false">
+<style>
+@scope {
+    :not(:defined) {
+        outline: 2px solid deeppink;
+        background: deeppink;
+        height: 1em;
+    }
+}
+</style>
+
+<div>
+    Я браузерный, я defined.
+</div>
+<some-text>
+    А я непонятный. Даже не Custom Element.
+</some-text>
+                </textarea>
+                <div class="demo-result"></div>
+            </div>
+        </css-demo>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout"><code>:scope</code></h2>
+    </section>
+
+    <section class="slide demo">
+        <css-demo>
+            <div class="demo-panels">
+                <textarea class="demo-code" spellcheck="false">
+<style>
+@scope {
+    :scope {
+        background: orangered;
+    }
+}
+</style>
+
+<div>
+    Я внутри изолированного<br>
+    элемента, к которому<br>
+    обращается @scope.
+</div>
+                </textarea>
+                <div class="demo-result"></div>
+            </div>
+        </css-demo>
+    </section>
+
+    <section class="slide">
+        <baseline-status featureId="scope" class="place zoom"></baseline-status>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout"><code>:popover-open</code></h2>
+    </section>
+
+	<section class="slide demo">
+        <css-demo>
+            <div class="demo-panels">
+                <textarea class="demo-code" spellcheck="false">
+<style>
+@scope {
+    :popover-open {
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%); 
+        color: maroon;
+        background-color: orange;
+        font-size: 25px;
+    }
+}
+</style>
+
+<button popovertarget="myPopover">Выпускайте Кракена!</button>
+
+<div popover id="myPopover">Приветик!</div>
+                </textarea>
+                <div class="demo-result"></div>
+            </div>
+        </css-demo>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout"><code>:lang()</code></h2>
+    </section>
+
+    <section class="slide">
+        <pre class="place"><code>&lt;p lang="de"&gt;Wie spät ist es?&lt;/p&gt;
+&lt;p lang="ru"&gt;Который час?&lt;/p&gt;
+&lt;style&gt;
+    :lang(ru) {
+        font-family: SomeCyrillicFont, sans-serif;
+    }
+    :lang(de) {
+        font-family: SomeGermanFont, sans-serif;
+    }
+&lt;/style&gt;</code></pre>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout"><code>:dir()</code></h2>
+    </section>
+
+    <section class="slide">
+        <pre class="place"><code>nav {
+    text-align: right;
+}
+
+nav:dir(rtl) {
+    text-align: left;
+}</code></pre>
+    </section>
+
+	<footer class="badge">
+        <a href="https://github.com/shower/shower">Сделано в Shower</a>
+	</footer>
+
+	<div class="progress"></div>
+
+	<script src="../src/shower/shower.min.js"></script>
+    <script src="../src/highlight/highlight.pack.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script>
+        (function() {
+            var mouseTimer = null, cursorVisible = true;
+
+            function disappearCursor() {
+                mouseTimer = null;
+                document.body.style.cursor = "none";
+                cursorVisible = false;
+            }
+
+            document.onmousemove = function() {
+                if (mouseTimer) {
+                    window.clearTimeout(mouseTimer);
+                }
+                if (!cursorVisible) {
+                    document.body.style.cursor = "default";
+                    cursorVisible = true;
+                }
+                mouseTimer = window.setTimeout(disappearCursor, 3000);
+            };
+        })();
+    </script>
+
+    <script>
+        const demoCodes = document.querySelectorAll("css-demo .demo-code");
+        const setDemoValue = function(textarea) {
+            const code = textarea.value;
+            const demoResult = textarea.parentNode.querySelector('.demo-result');
+            demoResult.innerHTML = code;
+            if (window.indeterminate) window.indeterminate.indeterminate = true;
+        };
+        const setChangeListener = function(demoCode, listener) {
+            demoCode.addEventListener("blur", listener);
+            demoCode.addEventListener("keyup", listener);
+        }
+        demoCodes.forEach(demoCode => {
+            const textarea = demoCode;
+            setDemoValue(textarea);
+            setChangeListener(demoCode, () => {
+                setDemoValue(textarea);
+            });
+        });
+    </script>
 
 </body>
 </html>
