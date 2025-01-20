@@ -55,16 +55,8 @@
 	<section class="slide title">
         <h2 class="shout">Поехали 🚗</h2>
     </section>
-
-	<section class="slide">
-		<h2 class="shout">Нет доступа к разметке 😢</h2>
-	</section>
-
-	<section class="slide">
-        <h2 class="shout">Простые примеры 👍</h2>
-    </section>
-
-	<section class="slide">
+    
+    <section class="slide">
         <h2>Разрешённые символы</h2>
         <ul>
             <li class="next"><code>A–Z</code>, <code>a–z</code></li>
@@ -76,6 +68,15 @@
             <li class="next">не начинается с <code>[0–9]</code> или <code>-[0–9]</code></li>
         </ul>
     </section>
+
+	<section class="slide">
+		<h2 class="shout">Нет доступа к разметке 😢</h2>
+	</section>
+
+	<section class="slide">
+        <h2 class="shout">Простые примеры 👍</h2>
+    </section>
+
 
 	<section class="slide demo">
         <css-demo>
@@ -782,14 +783,6 @@
     </section>
 
     <section class="slide">
-        <h2 class="shout">
-            <img src="pictures/Firefox_logo_2019.svg" height="120" alt="">
-            <img src="pictures/chrome-logo.svg" height="120" alt="">
-            <img src="pictures/safari-logo.svg" alt="" height="120">
-        </h2>
-    </section>
-
-    <section class="slide">
         <h2 class="shout" style="font-size: 2em;"><code>::file-selector-button</code></h2>
     </section>
 
@@ -901,19 +894,21 @@
                 <textarea class="demo-code" spellcheck="false">
 <style>
 @scope {
-    .focus {
+    form {
         display: flex;
         flex-direction: column;
         gap: 6px;
         border: 1px dashed tomato;
+        padding: 10px;
+        margin-bottom: 20px;
     }
-    .focus:focus-visible {
+    .focus:focus-within {
         border: 1px solid lime;
     }
 }
 </style>
 
-<form style="border: 1px dashed tomato; margin-bottom: 20px; padding: 10px;">
+<form>
     <input type="text" placeholder="Я просто поле ввода">
 </form>
 
@@ -1130,16 +1125,41 @@
         <h2 class="shout"><code>:empty</code></h2>
     </section>
 
+    <section class="slide demo">
+        <css-demo>
+            <div class="demo-panels">
+                <textarea class="demo-code" spellcheck="false">
+<style>
+@scope {
+    .box {
+        background-color: tomato;
+        width: 100%;
+        height: 40px;
+        vertical-align: middle;
+}
+
+    .box:empty {
+        background-color: lime;
+}
+}
+</style>
+
+    <p class="box"></p><br>
+    <p class="box">I am tomato.</p><br>
+    <p class="box"><!-- I am lime --></p><br>
+    <p class="box"> <!-- I am tomato too --> </p>
+                </textarea>
+                <div class="demo-result"></div>
+            </div>
+        </css-demo>
+    </section>
+
     <section class="slide">
         <pre class="place big"><code>div:empty {
     outline: 2px solid deeppink;
     background: deeppink;
     height: 1em;
 }</code></pre>
-    </section>
-
-    <section class="slide">
-        <img src="./pictures/tailwind-empty.jpeg" alt="" class="cover height">
     </section>
 
     <section class="slide">
@@ -1193,6 +1213,38 @@
 }</code></pre>
     </section>
 
+    <section class="slide demo">
+        <css-demo>
+            <div class="demo-panels">
+                <textarea class="demo-code" spellcheck="false">
+<style>
+@scope {
+    input:autofill {
+        border: 2px solid tomato;
+    }
+}
+</style>
+
+<form>
+    <label for="name">Name: </label><br>
+    <input id="name" name="name" type="text" autocomplete="name" /><br>
+    
+    <label for="email">Email: </label><br>
+    <input id="email" name="email" type="email" autocomplete="email" /><br>
+    
+    <label for="home-address">Home Address:</label><br>
+    <input name="address" type="text" autocomplete="street-address"><br>
+    
+    <label for="country">Country: </label><br>
+    <input id="country" name="country" type="text" autocomplete="country-name" />
+</form>
+</form>
+                </textarea>
+                <div class="demo-result"></div>
+            </div>
+        </css-demo>
+    </section>
+
     <section class="slide">
         <h2><img src="./pictures/safari-logo.svg" alt="" height="40"> Safari и мультимедиа</h2>
         <ul>
@@ -1217,8 +1269,8 @@
 <style>
 @scope {
     :not(:defined) {
-        outline: 2px solid deeppink;
-        background: deeppink;
+        outline: 2px solid tomato;
+        background: tomato;
         height: 1em;
     }
 }
@@ -1247,7 +1299,7 @@
 <style>
 @scope {
     :scope {
-        background: orangered;
+        background: tomato;
     }
 }
 </style>
@@ -1314,6 +1366,33 @@
 &lt;/style&gt;</code></pre>
     </section>
 
+    <section class="slide demo">
+        <css-demo>
+            <div class="demo-panels">
+                <textarea class="demo-code" spellcheck="false">
+<style>
+@scope {
+    p:lang(en) { 
+        background-color: lighgray;
+        color: tomato;
+        font-weight: bold;
+    }
+    
+    p:lang(it) { 
+        background-color: tomato;
+        font-style: italic;
+    }
+}
+</style>
+
+<p lang="en">London is a capital of Great Britan</p>
+<p lang="it">Sono venuto per masticare una gomma e dare filo da torcere a tutti</p>
+                </textarea>
+                <div class="demo-result"></div>
+            </div>
+        </css-demo>
+    </section>
+
     <section class="slide">
         <h2 class="shout"><code>:dir()</code></h2>
     </section>
@@ -1327,6 +1406,787 @@ nav:dir(rtl) {
     text-align: left;
 }</code></pre>
     </section>
+
+    <section class="slide demo">
+        <css-demo>
+            <div class="demo-panels">
+                <textarea class="demo-code" spellcheck="false">
+<style>
+@scope {
+    p {
+        text-align: left;
+    }
+
+    p:dir(rtl) {
+        text-align: right;
+        color: tomato;
+    }
+}
+</style>
+
+<p>Я обычный текст</p>
+
+<p dir="rtl">جئت لأمضغ العلكة وأسبب المشاكل للجميع</p>
+                </textarea>
+                <div class="demo-result"></div>
+            </div>
+        </css-demo>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout"><code>:only-child</code>,<br><code>:only-of-type</code></h2>
+    </section>
+
+    <section class="slide demo">
+        <css-demo>
+            <div class="demo-panels">
+                <textarea class="demo-code" spellcheck="false">
+<style>
+@scope {
+    :only-child {
+        background: tomato;
+    }
+}
+</style>
+<div>
+    <p>Единственный параграф</p>
+</div>
+<div>
+    <p>Первый</p>
+    <p>Второй</p>
+</div>
+                </textarea>
+                <div class="demo-result"></div>
+            </div>
+        </css-demo>
+    </section>
+
+    <section class="slide demo">
+        <css-demo>
+            <div class="demo-panels">
+                <textarea class="demo-code" spellcheck="false">
+<style>
+@scope {
+    :only-of-type {
+        background: orangered;
+    }
+}
+</style>
+<div>
+    <p>Единственный параграф</p>
+</div>
+<div>
+    <p>Первый</p>
+    <span>Второй</span>
+</div>
+                </textarea>
+                <div class="demo-result"></div>
+            </div>
+        </css-demo>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout"><code>:first-child</code>,<br><code>:first-of-type</code>,<br><code>:last-child</code>,<br><code>:last-of-type</code></h2>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout"><code>:not()</code></h2>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout"><code>:not(#id)</code><br><small>(1, 0, 0)</small></h2>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout"><code>:not(.class)</code><br><small>(0, 1, 0)</small></h2>
+    </section>
+
+    <section class="slide">
+        <div style="display: flex; justify-content: space-between; font-size: 1.2em;">
+            <pre><code>.card {
+    margin-right: 2em;
+}
+.card:last-child {
+    margin-right: 0;
+}</code></pre>
+
+            <pre class="next"><code>
+
+
+
+
+
+.card:not(:last-child) {
+    margin-right: 2em;
+}</code></pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout"><code>:is(#id)</code><br><small>(1, 0, 0)</small></h2>
+    </section>
+
+    <section class="slide">
+        <pre class="place"><code>article h1,
+article h2,
+article h3,
+article h4 {
+    font-weight: bold;
+}
+
+article :is(h1, h2, h3, h4) {
+    font-weight: bold;
+}</code></pre>
+    </section>
+
+    <section class="slide">
+        <pre class="place"><code>article h1,
+article h2,
+article h3,
+article h4 {
+    font-weight: bold;
+}
+
+article :where(h1, h2, h3, h4) {
+    font-weight: bold;
+}</code></pre>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout"><code>:where(#id)</code><br><small>(0, 0, 0)</small></h2>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout"><code>:nth-child()</code></h2>
+    </section>
+
+    <section class="slide demo">
+        <css-demo>
+            <div class="demo-panels">
+                <textarea class="demo-code" spellcheck="false">
+<style>
+@scope {
+    .card:nth-child(2) {
+        background: tomato;
+    }
+
+    .card {
+        padding: 1em;
+        background: navy;
+        text-align: center;
+    }
+
+    .cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1em;
+    }
+}
+</style>
+<div class="cards">
+    <div class="card">1</div>
+    <div class="card">2</div>
+    <div class="card">3</div>
+    <div class="card">4</div>
+    <div class="card">5</div>
+    <div class="card">6</div>
+    <div class="card">7</div>
+    <div class="card">8</div>
+</div>
+                </textarea>
+                <div class="demo-result"></div>
+            </div>
+        </css-demo>
+    </section>
+
+    <section class="slide demo">
+        <css-demo>
+            <div class="demo-panels">
+                <textarea class="demo-code" spellcheck="false">
+<style>
+@scope {
+    .card:nth-child(2n) {
+        background: tomato;
+    }
+
+    .card {
+        padding: 1em;
+        background: navy;
+        text-align: center;
+    }
+
+    .cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1em;
+    }
+}
+</style>
+<div class="cards">
+    <div class="card">1</div>
+    <div class="card">2</div>
+    <div class="card">3</div>
+    <div class="card">4</div>
+    <div class="card">5</div>
+    <div class="card">6</div>
+    <div class="card">7</div>
+    <div class="card">8</div>
+</div>
+                </textarea>
+                <div class="demo-result"></div>
+            </div>
+        </css-demo>
+    </section>
+
+    <section class="slide demo">
+        <css-demo>
+            <div class="demo-panels">
+                <textarea class="demo-code" spellcheck="false">
+<style>
+@scope {
+    .card:nth-child(3n+2) {
+        background: tomato;
+    }
+
+    .card {
+        padding: 1em;
+        background: navy;
+        text-align: center;
+    }
+
+    .cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1em;
+    }
+}
+</style>
+<div class="cards">
+    <div class="card">1</div>
+    <div class="card">2</div>
+    <div class="card">3</div>
+    <div class="card">4</div>
+    <div class="card">5</div>
+    <div class="card">6</div>
+    <div class="card">7</div>
+    <div class="card">8</div>
+</div>
+                </textarea>
+                <div class="demo-result"></div>
+            </div>
+        </css-demo>
+    </section>
+
+    <section class="slide demo">
+        <css-demo>
+            <div class="demo-panels">
+                <textarea class="demo-code" spellcheck="false">
+<style>
+@scope {
+    .card:nth-child(2n of div) {
+        background: tomato;
+    }
+
+    .card {
+        padding: 1em;
+        background: navy;
+        text-align: center;
+    }
+
+    .cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1em;
+    }
+}
+</style>
+<div class="cards">
+    <div class="card">1</div>
+    <span class="card">2</span>
+    <div class="card">3</div>
+    <span class="card">4</span>
+    <div class="card">5</div>
+    <span class="card">6</span>
+    <div class="card">7</div>
+    <span class="card">8</span>
+</div>
+                </textarea>
+                <div class="demo-result"></div>
+            </div>
+        </css-demo>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout" style="font-size: 1.7em;"><code>:nth-child(2n+1 of li.test)</code></h2>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout" style="font-size: 1.7em;"><code>:nth-last-child(3n+2)</code></h2>
+    </section>
+
+    <section class="slide">
+        <img src="./pictures/focus-pocus.jpg" alt="" class="place" style="mix-blend-mode: lighten;">
+    </section>
+
+    <section class="slide">
+        <pre class="place big"><code>:nth-last-child(6):first-child {
+    background: tomato;
+}</code></pre>
+    </section>
+
+    <section class="slide demo">
+        <css-demo>
+            <div class="demo-panels">
+                <textarea class="demo-code" spellcheck="false">
+<style>
+@scope {
+    .card:nth-last-child(6):first-child {
+        background: tomato;
+    }
+
+    .card {
+        padding: 1em;
+        background: navy;
+        text-align: center;
+    }
+
+    .cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1em;
+    }
+}
+</style>
+<div class="cards">
+    <div class="card">1</div>
+    <span class="card">2</span>
+    <div class="card">3</div>
+    <span class="card">4</span>
+    <div class="card">5</div>
+    <span class="card">6</span>
+    <div class="card">7</div>
+    <span class="card">8</span>
+</div>
+                </textarea>
+                <div class="demo-result"></div>
+            </div>
+        </css-demo>
+    </section>
+
+    <section class="slide">
+        <pre class="place big"><code>a:nth-last-child(6):first-child,
+a:nth-last-child(6):first-child ~ a {
+    background: tomato;
+}</code></pre>
+    </section>
+
+    <section class="slide demo">
+        <css-demo>
+            <div class="demo-panels">
+                <textarea class="demo-code" spellcheck="false">
+<style>
+@scope {
+    .card:nth-last-child(6):first-child,
+    .card:nth-last-child(6):first-child ~ .card {
+        background: tomato;
+    }
+
+    .card {
+        padding: 1em;
+        background: navy;
+        text-align: center;
+    }
+
+    .cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1em;
+    }
+}
+</style>
+<div class="cards">
+    <div class="card">1</div>
+    <span class="card">2</span>
+    <div class="card">3</div>
+    <span class="card">4</span>
+    <div class="card">5</div>
+    <span class="card">6</span>
+    <div class="card">7</div>
+    <span class="card">8</span>
+</div>
+                </textarea>
+                <div class="demo-result"></div>
+            </div>
+        </css-demo>
+    </section>
+
+    <section class="slide demo">
+        <css-demo>
+            <div class="demo-panels">
+                <textarea class="demo-code" spellcheck="false">
+<style>
+@scope {
+    .counter::after {
+        content: counter(cards);
+    }
+
+    .card:nth-last-child(6):first-child,
+    .card:nth-last-child(6):first-child ~ .card {
+        background: tomato;
+        counter-increment: cards;
+    }
+
+    .card {
+        padding: 1em;
+        background: navy;
+        text-align: center;
+    }
+
+    .cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1em;
+        counter-reset: cards;
+    }
+}
+</style>
+<div class="cards">
+    <div class="card">1</div>
+    <span class="card">2</span>
+    <div class="card">3</div>
+    <span class="card">4</span>
+    <div class="card">5</div>
+    <span class="card">6</span>
+    <div class="card">7</div>
+    <span class="card">8</span>
+</div>
+<p class="counter">Красных карточек: </p>
+                </textarea>
+                <div class="demo-result"></div>
+            </div>
+        </css-demo>
+    </section>
+
+    <section class="slide">
+        <img src="./pictures/css-tricks-nth-child-carousel.jpeg" alt="" class="cover place top">
+        <a class="copyright" href="https://css-tricks.com/solved-with-css-logical-styling-based-on-the-number-of-given-elements/">Logical Styling Based on the Number of Given Elements</a>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout" style="font-size: 1.7em;"><code>:nth-of-type(3n+2)</code></h2>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout" style="font-size: 1.7em;"><code>:nth-last-of-type(3n+2)</code></h2>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout"><code>:has()</code></h2>
+        <img src="./pictures/meme-wait-for-pleasure.png" alt="" class="place bottom left" width="250" style="left: 230px; bottom: 30px">
+    </section>
+
+    <section class="slide demo">
+        <css-demo>
+            <div class="demo-panels">
+                <textarea class="demo-code" spellcheck="false">
+<style>
+@scope {
+    .card:has(a) {
+        background: maroon;
+    }
+
+    .card {
+        padding: 1em;
+        background: navy;
+        text-align: center;
+    }
+
+    .cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1em;
+        counter-reset: cards;
+    }
+}
+</style>
+<div class="cards">
+    <div class="card">1</div>
+    <div class="card">2</div>
+    <div class="card"><a href="#">3</a></div>
+    <div class="card">4</div>
+    <div class="card">5</div>
+    <div class="card">6</div>
+    <div class="card">7</div>
+    <div class="card">8</div>
+</div>
+                </textarea>
+                <div class="demo-result"></div>
+            </div>
+        </css-demo>
+    </section>
+
+    <section class="slide">
+        <pre class="place"><code>.card:has(
+    :any-link:not[href^="https://atach.mmk.ru/"]
+) {
+    background: maroon;
+}</code></pre>
+    </section>
+
+    <section class="slide">
+        <img src="./pictures/shadeed-has-guide.jpeg" alt="" class="cover height">
+        <a class="copyright" href="https://ishadeed.com/article/css-has-guide/">CSS :has() Interactive Guide</a>
+    </section>
+
+    <section class="slide">
+        <baseline-status featureId="has" class="place zoom"></baseline-status>
+    </section>
+
+    <section class="slide">
+        <pre class="place"><code>&lt;article&gt;
+    &lt;div&gt;
+        &lt;p&gt;Я параграф. Красивый такой параграф.&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/article&gt;
+&lt;style&gt;
+
+    div:has(article p) {
+        font-weight: bold;
+    }
+&lt;/style&gt;</code></pre>
+    </section>
+
+    <section class="slide">
+        <pre class="place"><code>&lt;article&gt;
+    &lt;div&gt;
+        &lt;p&gt;Я параграф. Красивый такой параграф.&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/article&gt;
+&lt;style&gt;
+    /* ❌ */
+    div:has(article p) {
+        font-weight: bold;
+    }
+&lt;/style&gt;</code></pre>
+    </section>
+
+    <section class="slide">
+        <pre class="place"><code>&lt;article&gt;
+    &lt;div&gt;
+        &lt;p&gt;Я параграф. Красивый такой параграф.&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/article&gt;
+&lt;style&gt;
+    /* ✅ */
+    div:has(:is(article p)) {
+        font-weight: bold;
+    }
+&lt;/style&gt;</code></pre>
+    </section>
+
+    <section class="slide">
+        <pre class="place"><code>public getClass(items) {
+    let size = '';
+        
+    if (items.length >= 6) {
+        size = 'cards_size_big';
+    }
+    return size;
+}
+        
+&lt;div class="cards" [ngClass]={getClass()}&gt; Some elements... &lt;/div&gt;
+     </code>
+     </pre>
+    </section>
+
+    <section class="slide">
+        <pre class="place"><code>.cards {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.cards.cards_size_big {
+    grid-template-columns: repeat(3, 1fr);
+}</code></pre>
+    </section>
+
+    <section class="slide">
+        <pre class="place"><code>.cards {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.cards:has(.card:nth-child(6)) {
+    grid-template-columns: repeat(3, 1fr);
+}</code></pre>
+    </section>
+
+    <section class="slide demo">
+        <css-demo>
+            <div class="demo-panels">
+                <textarea class="demo-code" spellcheck="false">
+<style>
+@scope {
+    .cards {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1em;
+    }
+
+    .cards:has(.card:nth-child(6)) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .card {
+        padding: 1em;
+        background: navy;
+        text-align: center;
+    }
+}
+</style>
+<div class="cards">
+    <div class="card">1</div>
+    <div class="card">2</div>
+    <div class="card">3</div>
+    <div class="card">4</div>
+</div>
+                </textarea>
+                <div class="demo-result"></div>
+            </div>
+        </css-demo>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout"><span class="arrow">JS</span> — наполнение,<br><span class="arrow">CSS</span> — стилизация</h2>
+    </section>
+
+    <section class="slide">
+        <pre class="place big"><code>ul:has(
+    > :nth-child(7)
+):has(
+    > :nth-child(-n+9):last-child
+)</code></pre>
+        <a class="copyright" href="https://www.bram.us/2022/11/17/style-a-parent-element-based-on-its-number-of-children-using-css-has/">Style a parent element based on its number of children using CSS :has()</a>
+    </section>
+
+    <section class="slide">
+        <pre class="place big"><code>.img:has(+ p) {
+    margin-bottom: 2em;
+}</code></pre>
+    </section>
+
+    <section class="slide">
+        <pre class="place big"><code>.card:has(.button:hover) {
+    /* TODO */
+}</code></pre>
+    </section>
+
+    <section class="slide">
+        <iframe src="https://codepen.io/jh3y/full/GRBNvvX" frameborder="0" class="cover width height"></iframe>
+        <a class="copyright" href="https://codepen.io/jh3y/full/GRBNvvX">Calendar Styling with CSS :has()</a>
+    </section>
+
+    <section class="slide">
+        <pre class="place big"><code>.filter:not(:has(.item)) {
+    /* Пустой фильтр */
+}</code></pre>
+    </section>
+
+    <section class="slide">
+        <iframe src="./demos/quiz.html" frameborder="0" class="cover width height"></iframe>
+        <a class="copyright" href="./demos/quiz.html">CSS-квиз</a>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout" style="font-size: 2em;">❌ <code>ul:has(li:has(a))</code></h2>
+    </section>
+
+    <section class="slide title">
+        <h2 class="shout">Светлое будущее</h2>
+        <img src="./pictures/futurama.jpg" alt="" class="cover" style="opacity: 0.1;">
+    </section>
+
+    <section class="slide">
+        <h2 class="shout"><code>column||cell</code></h2>
+    </section>
+
+    <section class="slide">
+        <pre><code>&lt;table&gt;
+    &lt;colgroup&gt;
+        &lt;col span="2"&gt;
+        &lt;col&gt;
+    &lt;/colgroup&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;1.1&lt;/td&gt;
+            &lt;td&gt;1.2&lt;/td&gt;
+            &lt;td&gt;2&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+        <a class="copyright" href="https://developer.mozilla.org/en-US/docs/Web/CSS/Column_combinator">Column combinator</a>
+    </section>
+
+    <section class="slide">
+        <img src="./pictures/select-parts.png" alt="" class="place" width="800">
+        <a class="copyright" href="https://developer.chrome.com/blog/rfc-customizable-select">Request for developer feedback: customizable select</a>
+    </section>
+
+    <section class="slide">
+        <img src="./pictures/whatwg-customizable-select.jpeg" alt="" class="place" width="800">
+        <img src="./pictures/meme-happy-cat.png" alt="" class="place bottom left" height="310" style="left: 10px">
+        <a class="copyright" href="https://github.com/whatwg/html/issues/9799">Customizable &lt;select&gt; element</a>
+    </section>
+
+    <section class="slide title">
+        <h2 class="shout">Как ещё применять</h2>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout"><img src="pictures/github-logo.svg" height="60" alt=""> <a href="https://github.com/nternetinspired/debug-css/blob/master/debug.css">debug.css</a></h2>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout"><img src="pictures/github-logo.svg" height="60" alt=""> <a href="https://github.com/Heydon/REVENGE.CSS/blob/master/revenge.css">REVENGE.CSS</a></h2>
+    </section>
+
+    <section class="slide">
+        <pre class="place"><code>form:not([action])::after {
+    content: 'Forms must have action attributes.' !important;
+}
+
+[tabindex]:not([tabindex="0"]):not([tabindex="-1"])::after {
+    content: 'Do not disrupt the natural tab order.' !important;
+}</code></pre>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout">🧠 <a href="https://csswizardry.com/ct/">ct.css</a></h2>
+    </section>
+
+    <section class="slide">
+        <pre><code>head,
+head script,
+head script[type]:not([type="text/javascript"]) {
+    display: block;
+}
+
+head script[src]::before {
+    content: "[Blocking Script – " attr(src) "]";
+}
+
+head style:not(:empty) ~ script::before {
+    content: "[JS blocked by CSS – " attr(src) "]";
+}</code></pre>
+    </section>
+
+    <section class="slide">
+        <img src="./pictures/wpt-selector.jpeg" alt="" class="cover height">
+        <a class="copyright" href="https://wpt.fyi/results/css/selectors?label=master&label=experimental&aligned&q=selector">web-platform-tests dashboard</a>
+    </section>
+
+    <section class="slide clear white" id="final">
+        <h2>Выбирайте осознанно!</h2>
+    </section>
+
 
 	<footer class="badge">
         <a href="https://github.com/shower/shower">Сделано в Shower</a>
