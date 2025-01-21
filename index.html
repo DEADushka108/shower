@@ -29,7 +29,7 @@
     </section>
 
     <section class="slide">
-        <img src="./pictures/css-logo.png" alt="CSS logo" class="place" width="400">
+        <img src="./pictures/backend-css.jpg" alt="CSS logo" class="place" width="400">
     </section>
 
     <section class="slide">
@@ -1414,20 +1414,33 @@ nav:dir(rtl) {
                 <textarea class="demo-code" spellcheck="false">
 <style>
 @scope {
-    p {
+    button {
+        width: 100px;
+        height: 30px;
+        border-radius: 20px;
+        border: none;
+        background-color: lightgreen;
         text-align: left;
     }
 
-    p:dir(rtl) {
+    nav:dir(rtl) button {
         text-align: right;
-        color: tomato;
+        background-color: salmon;
     }
 }
 </style>
 
-<p>Я обычный текст</p>
+<nav>
+    <button type="button">Домой</button>
+    <button type="button">О нас</button>
+    <button type="button">Продукты</button>
+</nav>
 
-<p dir="rtl">جئت لأمضغ العلكة وأسبب المشاكل للجميع</p>
+<nav dir="rtl">
+    <button type="button">بيت</button>
+    <button type="button">معلومات عنا</button>
+    <button type="button">منتجات</button>
+</nav>
                 </textarea>
                 <div class="demo-result"></div>
             </div>
@@ -1928,10 +1941,50 @@ a:nth-last-child(6):first-child ~ a {
 
     <section class="slide">
         <pre class="place"><code>.card:has(
-    :any-link:not[href^="https://atach.mmk.ru/"]
+    :any-link[href^="https://atach.mmk.ru/"]
 ) {
     background: maroon;
 }</code></pre>
+    </section>
+
+    <section class="slide demo">
+        <css-demo>
+            <div class="demo-panels">
+                <textarea class="demo-code" spellcheck="false">
+<style>
+@scope {
+    .card:has(:any-link:not([href^="https://atach.mmk.ru/"])) {
+        background: maroon;
+    }
+
+    .card {
+        padding: 1em;
+        background: lightgreen;
+        text-align: center;
+    }
+
+    .cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1em;
+        counter-reset: cards;
+    }
+}
+</style>
+<div class="cards">
+    <div class="card"><a href="#">1</a></div>
+    <div class="card"><a href="#">2</a></div>
+    <div class="card"><a href="#">3</a></div>
+    <div class="card"><a href="https://atach.mmk.ru/">4</a></div>
+    <div class="card"><a href="#">5</a></div>
+    <div class="card"><a href="https://atach.mmk.ru/">6</a></div>
+    <div class="card"><a href="#">7</a></div>
+    <div class="card"><a href="https://atach.mmk.ru/">8</a></div>
+</div>
+                </textarea>
+                <div class="demo-result"></div>
+            </div>
+        </css-demo>
     </section>
 
     <section class="slide">
@@ -2066,6 +2119,50 @@ a:nth-last-child(6):first-child ~ a {
     > :nth-child(-n+9):last-child
 )</code></pre>
         <a class="copyright" href="https://www.bram.us/2022/11/17/style-a-parent-element-based-on-its-number-of-children-using-css-has/">Style a parent element based on its number of children using CSS :has()</a>
+    </section>
+
+    <section class="slide demo">
+        <css-demo>
+            <div class="demo-panels">
+                <textarea class="demo-code" spellcheck="false">
+<style>
+@scope {
+    .demo-list:not(#demo1) {
+        padding-left: 60px;
+    }
+    .demo-list:has(> :nth-child(7)):has(> :nth-child(-n+9):last-child) {
+        outline: 2px solid tomato;
+    }
+    .demo-list li::marker {
+        content: '🍎';
+        font-size: 1em;
+    }
+    
+    .demo-list li::before {
+        content: '' !important;
+    }
+}
+</style>
+<ul class="demo-list">
+    <li>Голден</li>
+    <li>Гала</li>
+    <li>Черный принц</li>
+    <li>Карамелька</li>
+    <li>Спартан</li>
+    <li>Фуджи</li>
+    <li>Ренет Симиренко</li>
+</ul>
+
+<ul class="demo-list">
+    <li>Хоней Крисп</li>
+    <li>Малинка</li>
+    <li>Богатырь</li>
+</ul>
+
+                </textarea>
+                <div class="demo-result"></div>
+            </div>
+        </css-demo>
     </section>
 
     <section class="slide">
