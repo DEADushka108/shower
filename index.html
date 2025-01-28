@@ -20,6 +20,26 @@
         </p>
 	</header>
 
+    <section class="slide clear" style="background: linear-gradient(to left top, #22b3f5, #593cfc);">
+        <h2>Селекторы CSS</h2>
+        <p>Кузнецов Андрей, teamlead frontend ЦКМиВР</p>
+        <p>ММК-Информсервис</p>
+    </section>
+
+
+    <section class="slide">
+        <div style="margin-left: 380px;">
+            <h2>Андрей <br> Кузнецов</h2>
+            <ul>
+                <li>разработчик интерфейсов Атач</li>
+                <li>работаю с HTML5, CSS5</li>
+                <li>люблю верстать</li>
+                <li>профессионально верстаю 5 лет</li>
+            </ul>
+        </div>
+        <img src="./pictures/kuznetsov-avatar.png" alt="Me" style="background: transparent;" class="place left cover height">
+    </section>
+
     <section class="slide">
         <img src="./pictures/meme-tell-me.jpg" alt="Расскажи мне" class="cover width">
     </section>
@@ -459,6 +479,125 @@
             <small>(0, 1, 0)</small>
         </h2>
     </section>
+
+    <!-- <section class="slide title">
+        <h2 class="shout">@-правила 📜</h2>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout"><code>@property</code></h2>
+    </section>
+
+    <section class="slide">
+        <div style="display: flex; justify-content: space-between; font-size: 1.2em;">
+            <pre><code>window.CSS.registerProperty({
+    name: "--item-color",
+    syntax: "&lt;color&gt;",
+    inherits: false,
+    initialValue: "aqua",
+});</code></pre>
+
+            <pre class="next"><code>
+
+
+
+
+
+@property --item-color {
+    syntax: "&lt;color&gt;";
+    inherits: true;
+    initial-value: aqua;
+}</code></pre>
+        </div>
+    </section>
+
+    <section class="slide demo">
+        <css-demo>
+            <div class="demo-panels">
+                <textarea class="demo-code" spellcheck="false">
+<style>
+@scope {
+    @property --my-bg-color {
+        syntax: "<color>";
+        inherits: true;
+        initial-value: lightgray;
+    }
+
+    div {
+        width: 300px;
+        height: 150px;
+        padding: 15px;
+        background-color: var(--my-bg-color);
+    }
+
+    .fresh {
+        --my-bg-color: tomato;
+    }
+
+    .nature {
+        --my-bg-color: 2;
+    }
+}
+</style>
+<div>Я DIV1</div>
+<div class="fresh">А я DIV2</div>
+<div class="nature">И я DIV3</div>
+                </textarea>
+                <div class="demo-result"></div>
+            </div>
+        </css-demo>
+    </section>
+
+    <section class="slide demo">
+        <css-demo>
+            <div class="demo-panels">
+                <textarea class="demo-code" spellcheck="false">
+<style>
+@scope {
+    @property --startColor {
+        syntax: "<color>";
+        initial-value: #22b3f5;
+        inherits: false;
+    }
+
+    @property --endColor {
+        syntax: "<color>";
+        initial-value: #593cfc;
+        inherits: false;
+    }
+
+    .ex1 {
+        background: linear-gradient(var(--startColor), var(--endColor));
+        animation: gradient 3s linear infinite;
+}
+
+@keyframes gradient {
+  0%,
+  100% {
+    --startColor: #22b3f5;
+    --endColor: #593cfc;
+  }
+  50% {
+    --startColor: #593cfc;
+    --endColor: #22b3f5;
+  }
+}
+
+#grad1 {
+  height: 200px;
+}
+}
+</style>
+<div id="grad1" class="ex1"></div>
+                </textarea>
+                <div class="demo-result"></div>
+            </div>
+        </css-demo>
+    </section>
+
+    <section class="slide">
+        <baseline-status featureId="property" class="place zoom"></baseline-status>
+    </section> -->
 
     <section class="slide title">
         <h2 class="shout">Комбинаторы 🪡</h2>
@@ -2281,8 +2420,15 @@ head style:not(:empty) ~ script::before {
         <a class="copyright" href="https://wpt.fyi/results/css/selectors?label=master&label=experimental&aligned&q=selector">web-platform-tests dashboard</a>
     </section>
 
-    <section class="slide clear white" id="final">
-        <h2>Выбирайте осознанно!</h2>
+    <section class="slide" id="final" style="background: linear-gradient(to right bottom, #22b3f5, #593cfc);">
+        <div style="margin-left: 380px;">
+            <h2>Разрабатывайте с удовольствием!</h2>
+            <div style="display: flex; gap: 26px; justify-content: space-around; margin-top: 60px;">
+                <img src="./pictures/url.svg" alt="Me"  style="width: auto; height: 152px;">
+                <img src="./pictures/qr-telegram.png" alt="Me" style="width: auto; height: 168px; margin-top: 3px;">
+            </div>
+        </div>
+        <img src="./pictures/kuznetsov-avatar.png" alt="Me" class="place cover left">
     </section>
 
 
